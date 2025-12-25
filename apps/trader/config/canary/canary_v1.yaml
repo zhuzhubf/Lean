@@ -1,0 +1,8 @@
+profile_name: canary
+version: 1
+allowed_symbols:
+  - BTC
+  - ETH
+max_daily_orders: 2
+per_order_notional_cap_pct: 0.02
+total_notional_cap_pct: 0.05

@@ -1,0 +1,29 @@
+version: 2
+majors:
+  - BTC
+  - ETH
+alts:
+  - SOL
+  - BNB
+  - XRP
+  - ADA
+  - MATIC
+  - DOGE
+  - DOT
+  - LTC
+  - AVAX
+  - LINK
+whitelist:
+  - BTC
+  - ETH
+  - SOL
+  - BNB
+  - XRP
+  - ADA
+  - MATIC
+  - DOGE
+  - DOT
+  - LTC
+  - AVAX
+  - LINK
+symbol_metadata: {}

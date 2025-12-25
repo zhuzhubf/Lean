@@ -281,3 +281,14 @@ Research/Notebooks
 #Docker result files
 Results/
 QuantConnect.Lean.sln.DotSettings
+
+# Hyperliquid trader bootstrap
+.env
+.env.*
+*.log
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+coverage.
+.idea/
+.vscode/

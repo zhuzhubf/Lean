@@ -1,0 +1,31 @@
+profile_name: aggressive
+version: 1
+defaults:
+  decision_interval_sec: 600
+  timeframe: "1h-4h"
+asset_classes:
+  majors:
+    weight: 1.2
+    max_leverage: 6
+    per_symbol_max_notional_pct: 0.35
+    total_class_max_notional_pct: 0.70
+    new_position_cooldown_sec: 10800
+    add_position_cooldown_sec: 3600
+  alts:
+    weight: 0.6
+    max_leverage: 4
+    per_symbol_max_notional_pct: 0.20
+    total_class_max_notional_pct: 0.40
+    new_position_cooldown_sec: 14400
+    add_position_cooldown_sec: 7200
+portfolio_limits:
+  total_max_notional_pct: 0.90
+  per_symbol_max_notional_pct_override: {}
+risk_budget:
+  per_trade_max_loss_pct: 0.02
+  daily_loss_limit_pct_default: 0.12
+  daily_loss_limit_pct_cap: 0.20
+market_protections:
+  max_spread_bps: 15
+  volatility_guard_atr_mult: 3.0
+  forbid_market_orders_when_guarded: true

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  trader:
+    build:
+      context: ..
+      dockerfile: apps/trader/Dockerfile
+    env_file:
+      - ../.env
+    environment:
+      - HL_LIVE_TRADING=false
+      - HL_RISK_ACK=
+    command: ["python", "-m", "trader", "run", "--mode", "shadow", "--symbols", "BTC,ETH", "--iterations", "1", "--interval", "60"]
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tracker}
+      POSTGRES_USER: ${POSTGRES_USER:-tracker}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tracker}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:

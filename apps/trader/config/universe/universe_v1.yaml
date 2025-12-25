@@ -1,0 +1,9 @@
+version: 1
+majors:
+  - BTC
+  - ETH
+alts: []
+whitelist:
+  - BTC
+  - ETH
+symbol_metadata: {}
