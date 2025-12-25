@@ -1,0 +1,24 @@
+[project]
+name = "hyperliquid-trader-bootstrap"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Monorepo bootstrap for a Hyperliquid swing trading bot (shadow-only)."
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+include = "apps/trader/src"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["apps/trader/src", "apps/trader/tests", "docs"]
+select = ["E", "F", "B", "I"]
+
+[tool.pytest.ini_options]
+pythonpath = ["apps/trader/src"]
+testpaths = ["apps/trader/tests"]
+addopts = "-q"
+
+[tool.ruff.lint.isort]
+known-first-party = ["trader"]

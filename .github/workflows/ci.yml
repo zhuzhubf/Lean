@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Gitleaks
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          args: "detect --no-banner"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r apps/trader/requirements.txt -r requirements-dev.txt
+
+      - name: Pip Audit
+        run: pip-audit -r apps/trader/requirements.txt -r requirements-dev.txt
+
+      - name: Bandit
+        run: bandit -q -r apps/trader/src
+
+      - name: Ruff
+        run: ruff check apps/trader
+
+      - name: Black
+        run: black --check apps/trader
+
+      - name: Pytest
+        env:
+          PYTHONPATH: apps/trader/src
+        run: pytest
+
+      - name: Docker build (trader)
+        if: github.event_name == 'push'
+        run: docker build -f apps/trader/Dockerfile -t trader:ci .

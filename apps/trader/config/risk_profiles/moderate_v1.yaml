@@ -1,0 +1,31 @@
+profile_name: moderate
+version: 1
+defaults:
+  decision_interval_sec: 900
+  timeframe: "1h-4h"
+asset_classes:
+  majors:
+    weight: 1.0
+    max_leverage: 5
+    per_symbol_max_notional_pct: 0.30
+    total_class_max_notional_pct: 0.60
+    new_position_cooldown_sec: 14400
+    add_position_cooldown_sec: 7200
+  alts:
+    weight: 0.5
+    max_leverage: 3
+    per_symbol_max_notional_pct: 0.15
+    total_class_max_notional_pct: 0.30
+    new_position_cooldown_sec: 14400
+    add_position_cooldown_sec: 10800
+portfolio_limits:
+  total_max_notional_pct: 0.80
+  per_symbol_max_notional_pct_override: {}
+risk_budget:
+  per_trade_max_loss_pct: 0.015
+  daily_loss_limit_pct_default: 0.10
+  daily_loss_limit_pct_cap: 0.20
+market_protections:
+  max_spread_bps: 12
+  volatility_guard_atr_mult: 2.5
+  forbid_market_orders_when_guarded: true

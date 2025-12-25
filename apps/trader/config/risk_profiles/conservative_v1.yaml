@@ -1,0 +1,31 @@
+profile_name: conservative
+version: 1
+defaults:
+  decision_interval_sec: 1200
+  timeframe: "1h-4h"
+asset_classes:
+  majors:
+    weight: 1.0
+    max_leverage: 3
+    per_symbol_max_notional_pct: 0.20
+    total_class_max_notional_pct: 0.40
+    new_position_cooldown_sec: 14400
+    add_position_cooldown_sec: 10800
+  alts:
+    weight: 0.4
+    max_leverage: 2
+    per_symbol_max_notional_pct: 0.10
+    total_class_max_notional_pct: 0.20
+    new_position_cooldown_sec: 21600
+    add_position_cooldown_sec: 14400
+portfolio_limits:
+  total_max_notional_pct: 0.60
+  per_symbol_max_notional_pct_override: {}
+risk_budget:
+  per_trade_max_loss_pct: 0.01
+  daily_loss_limit_pct_default: 0.08
+  daily_loss_limit_pct_cap: 0.15
+market_protections:
+  max_spread_bps: 10
+  volatility_guard_atr_mult: 2.0
+  forbid_market_orders_when_guarded: true
